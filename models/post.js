@@ -1,12 +1,7 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/blogpost-backend", {
-    useNewUrlParser: true
-});
-
-mongoose.set("debug", true);
-mongoose.Promise = Promise;
 
 const postSchema = new mongoose.Schema({
+    title: String,
     post: String
 });
 
