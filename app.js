@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -5,12 +6,14 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const errHandler = require("./handlers/error");
 const postRoutes = require("./routes/post");
+const authRoutes = require("./routes/auth");
 const PORT = 8080;
 
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 
 
