@@ -25,6 +25,26 @@ exports.createPost  = async function(req, res, next){
     catch(e){
         return next(e);
     }
-
+}
+// GET /api/users/:id/posts/:post_id
+exports.getPost = async function(req, res, next){
+    try{
+        let post = await db.Post.findById(req.params.post_id);
+        return res.status(200).json(post);
+    }catch(e){
+        return next(e);
+    }
 
 }
+
+// DELETE /api/users/:id/posts/:post_id
+exports.deletePost = async function(req, res, next){
+    try{
+        let foundPost = await db.Post.findById(req.params.post_id);
+        await foundPost.remove();
+        return res.status(200).json(foundPost)
+    }catch(e){
+        return next(e);
+    }
+}
+

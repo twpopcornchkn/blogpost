@@ -9,6 +9,7 @@ const postRoutes = require("./routes/post");
 const authRoutes = require("./routes/auth");
 const { loginRequired, userAuthorization } = require("./middleware/auth");
 const PORT = 8080;
+const db = require("./models");
 
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
@@ -19,6 +20,23 @@ app.use("/api/users/:id/posts",
     loginRequired, 
     userAuthorization,
     postRoutes);
+
+//get allposts route
+app.get("/api/allposts", loginRequired, async function(req, res, next){
+    try{
+        let allposts = await db.Post.find()
+        .sort({ createdAt: "desc" })
+        .populate("user", {
+          username: true,
+          email: true,
+          profileImageUrl: true
+        });
+        return res.status(200).json(allposts);
+    }
+    catch(e){
+        return next(e);
+    }
+})
 
 
 //setup 404 error
