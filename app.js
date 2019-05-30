@@ -14,12 +14,12 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/post", postRoutes);
+app.use("/api/users/:id/posts", postRoutes);
 
 
 //setup 404 error
 app.use(function(req, res, next){
-    let err = new Error("Not Found");
+    let err = new Error("Page Not Found");
     err.status = 404;
     next(err);
 })
