@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     profileImageUrl: {
       type: String
     },
-    message: [
+    post: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post"
