@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const errHandler = require("./handlers/error");
 const postRoutes = require("./routes/post");
 const authRoutes = require("./routes/auth");
+const { loginRequired, userAuthorization } = require("./middleware/auth");
 const PORT = 8080;
 
 app.use(morgan("tiny"));
@@ -14,7 +15,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/users/:id/posts", postRoutes);
+app.use("/api/users/:id/posts", 
+    loginRequired, 
+    userAuthorization,
+    postRoutes);
 
 
 //setup 404 error
