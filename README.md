@@ -6,11 +6,13 @@ authentication, post, comment CRUD
 npm: `npm install`
 
 ## Sign up
+
 Method: POST
 Content-Type: application/json
 Endpoint: localhost:8080/api/auth/signup
 
 ##Request Body Payload
+
 | Property Name  | Type    | Description |
 | -------------- | ------- | -------------------------------------- |
 | username       | String  | The username for the user to create|
@@ -31,11 +33,13 @@ Endpoint: localhost:8080/api/auth/signup
 ```
 
 ## Create Post
+
 Method: POST
 Content-Type: application/json
 Endpoint: localhost:8080/api/users/[USER_ID]/messages/
 
 ##Request Body Payload
+
 | Property Name  | Type | Description |
 | -------------- | ---- | ----------- |
 | token          | String  |A  valid user token|
