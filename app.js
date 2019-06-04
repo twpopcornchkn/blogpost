@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const errHandler = require("./handlers/error");
 const postRoutes = require("./routes/post");
 const authRoutes = require("./routes/auth");
+const commentRoutes = require("./routes/comment");
 const { loginRequired, userAuthorization } = require("./middleware/auth");
 const PORT = 8080;
 const db = require("./models");
@@ -20,6 +21,8 @@ app.use("/api/users/:id/posts",
     loginRequired, 
     userAuthorization,
     postRoutes);
+
+app.use("/api/post/:post_id/comment", commentRoutes);
 
 //get allposts route
 app.get("/api/allposts", loginRequired, async function(req, res, next){
