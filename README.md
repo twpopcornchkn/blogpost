@@ -11,7 +11,7 @@ Method: POST
 Content-Type: application/json
 Endpoint: localhost:8080/api/auth/signup
 
-##Request Body Payload
+## Request Body Payload
 
 | Property Name  | Type    | Description |
 | -------------- | ------- | -------------------------------------- |
@@ -20,7 +20,7 @@ Endpoint: localhost:8080/api/auth/signup
 | email          | String  | The email for the user to create|
 | profileImageUrl| String  | The profile image for the user to create| 
 
-##Response Payload
+## Response Payload
 
 ```
 {
@@ -38,7 +38,7 @@ Method: POST
 Content-Type: application/json
 Endpoint: localhost:8080/api/users/[USER_ID]/messages/
 
-##Request Body Payload
+## Request Body Payload
 
 | Property Name  | Type | Description |
 | -------------- | ---- | ----------- |
@@ -46,7 +46,7 @@ Endpoint: localhost:8080/api/users/[USER_ID]/messages/
 | title          | String  ||
 | post           | String  || 
 
-##Response Payload
+## Response Payload
 
 ```
 {
